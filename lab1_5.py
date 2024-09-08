@@ -13,6 +13,7 @@ miles_per_galon = distance_traveled / gallon_used
 answer = round(miles_per_galon, rounded_answer)
 
 print(
+    f"Distance Traveled: {distance_traveled} Miles\nGallon Used: {gallon_used} Gallon(s)\n"
     "How many miles per gallon did the car average between two fillings?\n"
     f"Answer: {answer} Miles/Gallon"
 )
