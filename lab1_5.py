@@ -4,16 +4,13 @@
 initial_mile = 23456
 last_mile = 23678
 gallon_used = 10
-rounded_answer = 3
 
 #Calculation
 distance_traveled = last_mile - initial_mile
-miles_per_galon = distance_traveled / gallon_used
-
-answer = round(miles_per_galon, rounded_answer)
+answer = distance_traveled / gallon_used
 
 print(
     f"Distance Traveled: {distance_traveled} Miles\nGallon Used: {gallon_used} Gallon(s)\n"
     "How many miles per gallon did the car average between two fillings?\n"
-    f"Answer: {answer} Miles/Gallon"
+    f"Answer: {answer:.3f} Miles/Gallon"
 )
