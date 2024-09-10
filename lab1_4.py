@@ -5,4 +5,4 @@ discountPersent = 25
 markdown = discountPersent / price * 100
 price = price - markdown
 
-print(f"Price = {round(price,2)}")
+print(f"Price = {price:.2f}")
