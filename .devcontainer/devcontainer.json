@@ -1,8 +1,9 @@
-{"customizations": {
-    "vscode": {
-        "extensions": [
-            "ms-python.python",
-            "GitHub.github-vscode-theme"
-        ]
-    }
-}}
+{"name": "Codespace_ET574",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "GitHub.github-vscode-theme"
+            ]
+        }
+    }}
