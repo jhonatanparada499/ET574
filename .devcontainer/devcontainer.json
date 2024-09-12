@@ -1,5 +1,8 @@
 {"customizations": {
     "vscode": {
-        "extensions": ["ms-python.python"]
+        "extensions": [
+            "ms-python.python",
+            "GitHub.github-vscode-theme"
+        ]
     }
 }}
