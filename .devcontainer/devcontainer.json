@@ -3,7 +3,11 @@
         "vscode": {
             "extensions": [
                 "ms-python.python",
-                "GitHub.github-vscode-theme"
-            ]
+                "GitHub.github-vscode-colorTheme"
+            ],
+            "settings": {
+                "workbench.colorTheme": "GitHub Light Default"
+            }
         }
+
     }}
