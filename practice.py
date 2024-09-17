@@ -1,4 +1,5 @@
+num = 10
 
-var = "jhonatan parada"
-
-print(var.title())
+for i in range(num):
+    i *= 10
+    print(i)
