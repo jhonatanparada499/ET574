@@ -12,7 +12,6 @@ try:
         percentage = int(input("Enter the percentage of the tip: "))
 
         tip = bill * (percentage / 100)
-
         print(f"Tip: ${tip:.2f}")
 
     except ValueError:
