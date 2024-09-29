@@ -1,64 +1,57 @@
 # README
-# This portion of the lab uses functions, lists with 
-# the method append(), slicing, built-in functions
-# such as: input(), len() and str(), string methods such as:
-# isspace(), strip() and index(), while loops, and if-else statements
+# lab4_4.py Updated
+#
+# Program's function: To take a sentece and return the 
+# number of words in it.
+#  
+# Description: This version of the code uses recursion,
+# a concept that allows a function to use itself. Thanks 
+# to that, I was able to symplify the task even further
+# without the need of a while loop. Below the code is an
+# explanation of how the logic works.
+# 
+# Keywords:
+# sntc = sentence, strn = string, f_sp_i = first space index
 
-# LOGIC
-# 1. Imagine you have a string ' hello world '
-# 2. Use the strip method to remove the leading and trailing whitespace
-# 3. Now the string is 'hello world'
-# 4. Remove and save the first word somewhere [hello]
-# 5. Now the string is ' world'
-# 6. Go back to step 1 with the new string and repeat until string is ''
+sntc = input("Enter a sentence: ")
 
-# CHALLENGE
-# I believe this code is 100% functional, if you don't think so,
-# try to input any sentence with any amount of spaces and any amount
-# of words with any lenght. Were you able to break it?
-
-# IMPORTANT
-# 1. This code does not differentiate between numbers and letters,
-# so, for example, there will be 4 words in 'My id is 123'. 
-# 2. If you type a symbol alone such as 'hello . world', it will count
-# as a word, so the total of words would be 3, although '.' is a symbol.
-
-sntc = input("Enter a sentence: ") #sntc = sentence
-
-# functions are defined with the key word def and allows to reuse code
-def get_words(par):
-    string = str(par) # forces the parameter to be a string (extra security)
-    words_found = [] # will catch all the words it finds in the string
-    new_word = '' # will define each word in the string
-
-    # string lenght must not be 0 & must not be only spaces.
-    # will loop over string until it is empty
-    while len(string) and string.isspace() == False:
-        
-        string = string.strip() # removes unnecessary spaces  
-
-        # there will be a point where the string will be only one word
-        if not ' ' in string:
-            words_found.append(string) # the only word in the string is appended to words_found
-            
-            string = '' # since the string is empty the loop stops at this point
-
-        # happens if there are yet spaces in the string
-        else:
-            new_word = string[:string.index(' ')] # defines always the first word in string
-            words_found.append(new_word) # appends the new word
-
-            string = string[string.index(' '):] # string is redefined excluding the word found
-
-            # Example:
-            # string before = 'hello world'
-            # string after = ' world'
-
-            # since string after is not empty it keeps 
-            # looping over itself until it gets the last word
+def get_words(strn):
+    strn = strn.strip()
     
-    return words_found # returns all the words found in the string as a list
+    if not ' ' in strn: return [strn]
+    else:
+         f_sp_i = strn.index(' ')
+         new_strn = strn[f_sp_i:]
+         return [strn[:f_sp_i]] + get_words(new_strn)
 
-# displays the len of words_found
 print(f'Number of words: {len(get_words(sntc))}')
 
+# LOGIC
+
+# 1. get_words('hello world again')
+# strn = 'hello world again'
+# return ['hello'] + get_words(' world again')
+
+# 2. get_words(' world again')
+# strn = 'world again'
+# return ['world'] + get_words(' again') 
+
+# 3. get_words(' again')                   
+# strn = 'again'                           
+# return ['again'] 
+#
+# Simplify values 
+#   
+# get_words(' again') = ['again'] then 
+# get_words(' world again') = ['world'] + ['again] then
+# get_words('hello world again') = ['hello'] + ['world'] + ['again']
+
+
+# IMPORTANT
+# There might be a case where an user inputs no words, since
+# the code assumes that there is at least one character in
+# the sentence it will return 1 although there are not words.
+# To fix that, copy and paste the following line of code at the
+# beggining of the function get_words: 
+
+# if strn.isspace(): return []
