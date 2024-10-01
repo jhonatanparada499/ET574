@@ -1,30 +1,38 @@
-# README
-# lab4_4.py Updated
-#
-# Program's function: To take a sentece and return the 
-# number of words in it.
-#  
+sntc = input("Enter a sentence: ")
+
+words = sntc.split()
+
+print(f'Number of words: {len(words)}')
+
+# Ignore the text below
+
 # Description: This version of the code uses recursion,
 # a concept that allows a function to use itself. Thanks 
 # to that, I was able to symplify the task even further
 # without the need of a while loop. Below the code is an
 # explanation of how the logic works.
-# 
+
 # Keywords:
 # sntc = sentence, strn = string, f_sp_i = first space index
 
-sntc = input("Enter a sentence: ")
+#---------------------------------------------------
 
-def get_words(strn):
-    strn = strn.strip()
+# sntc = input("Enter a sentence: ")
+
+# def get_words(strn):
+#     strn = strn.strip()
     
-    if not ' ' in strn: return [strn]
-    else:
-         f_sp_i = strn.index(' ')
-         new_strn = strn[f_sp_i:]
-         return [strn[:f_sp_i]] + get_words(new_strn)
+#     if not ' ' in strn: return [strn]
+#     else:
+#          f_sp_i = strn.index(' ')
+#          new_strn = strn[f_sp_i:]
+#          return [strn[:f_sp_i]] + get_words(new_strn)
 
-print(f'Number of words: {len(get_words(sntc))}')
+# print(f'Number of words: {len(get_words(sntc))}')
+
+
+#---------------------------------------------------
+
 
 # LOGIC
 
