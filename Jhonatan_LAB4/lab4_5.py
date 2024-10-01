@@ -30,11 +30,11 @@ myInfo = [1, "two",'three', 4]
 # or equal than the first value, it will print an empty list
 # because does not go backwards.
 
-myInfo.reverse()
+myInfo.reverse() # or myInfo[::-1]
 print(myInfo)
 
 #E
-myInfo.reverse() #using the original list
+myInfo = [1,'two','three',4] #using the original list
 sprtor = ' <<<< ' #separator
 
 # print(" ".join(myLst))
@@ -42,17 +42,16 @@ sprtor = ' <<<< ' #separator
 # myInfo. Second error is that the join method does
 # not support int items in the iterable 
 
-# To accomplish the required ouput I see 2 solutions:
+# To accomplish the solution:
 
-# The first one would require to use a loop to convert all
-# the items in the list to string and then use the join method.
-# The second one is simplier but it does not use the join
-# method. 
+# Convert all elements of the list to string,  
+# then I will use the join method.
 
-# Second solution 
-print(*myInfo, sep=sprtor) # '*' at the beggining breaks down the list
+myInfo[0] = str(myInfo[0])
+myInfo[-1] = str(myInfo[-1])
 
-
-# First solution
-myInfo = [str(item) for item in myInfo] # list comprehension
 print(sprtor.join(myInfo))
+
+# another solution 
+# print(*myInfo, sep=sprtor) # '*' at the beggining breaks down the list
+# without * = print(['a','b','c']) with * = print(a,b,c)
