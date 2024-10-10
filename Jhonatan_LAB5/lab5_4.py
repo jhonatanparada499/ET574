@@ -1,4 +1,4 @@
-num_padding = 4
+num_margin = 4
 err_message = 'Invalid Input.'
 try:
     input_range = int(input("Enter a range: "))
@@ -9,7 +9,7 @@ try:
         print(f'Multiplication Table of {input_num}')
         for num in nums_list:
             row = f'{num}\t*\t{input_num}\t=\t{num * input_num}'
-            print(row.expandtabs(num_padding)) 
+            print(row.expandtabs(num_margin)) 
 
     except ValueError:
         print(err_message)
