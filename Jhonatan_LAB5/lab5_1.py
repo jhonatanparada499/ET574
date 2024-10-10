@@ -9,6 +9,5 @@ cubed_nums = [num**3 for num in nums_range]
 print(odd_nums)# A
 for num in cubed_nums: print(num)# B
 
-# C
-for num in cubed_nums: print(num, end='|')
-else: print() 
+for num in cubed_nums: print(num, end='|') 
+else: print() # C
