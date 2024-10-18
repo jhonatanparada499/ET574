@@ -10,4 +10,6 @@
             }
         }
 
-    }}
+    },
+    "postCreateCommand": "dirName = 'Jhonatan_LAB' && dirNum = '7' && newDir = '${dirName}${num}'' && mkdir '$newDir'"
+}
