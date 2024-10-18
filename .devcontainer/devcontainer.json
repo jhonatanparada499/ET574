@@ -1,4 +1,4 @@
-{"postCreateCommand": "mkdir 'Jhonatan12'",
+{"postCreateCommand": "dirName = 'Jhonatan_LAB' && dirNum = '45' && newDir = '${dirName}${num}'' && mkdir '$newDir'",
   "customizations": {
         "vscode": {
             "extensions": [
