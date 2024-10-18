@@ -11,5 +11,6 @@
         }
 
     },
-"postCreateCommand": "echo 'Hello World'"
+    "initializeCommand": "echo 'Hello World'",
+    "postCreateCommand": "echo 'Hello World'"
 }
