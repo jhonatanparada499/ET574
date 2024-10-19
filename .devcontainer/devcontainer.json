@@ -1,4 +1,4 @@
-{"postCreateCommand": "bash dir_maker.sh",
+{"postCreateCommand": "bash echo Hello World",
 "customizations": {
     "vscode": {
             "extensions": [
