@@ -1,4 +1,4 @@
-{"postCreateCommand": "sleep 2 && echo 'Welcome'",
+{"postCreateCommand": "bash dir_maker.sh",
 "customizations": {
     "vscode": {
             "extensions": [
