@@ -1,4 +1,4 @@
-{"postCreateCommand": "a='abc && mkdir ${a: -1}",
+{"postCreateCommand": "a='abc' && mkdir ${a: -1}",
   "customizations": {
         "vscode": {
             "extensions": [
