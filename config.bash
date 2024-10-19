@@ -9,7 +9,7 @@ lstLabNum=${lstLabName: -1} # 4
 newLabNum=$(expr $lstLabNum + 1)
 newLab=$labName$newLabNum # Jhonatan_LAB5
 
-mkdir $newLab 
+mkdir ${labParent}/${newLab} 
 
 for i in $(seq 1 $labFilesNum); do fileName='lab'${newLabNum}_${i}.py && txt='# '${fileName}' - '${devName} && echo $txt > ${labParent}/${newLab}/${fileName}; done
 
