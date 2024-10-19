@@ -1,4 +1,5 @@
-{"customizations": {
+{"postCreateCommand": "sleep 2 && echo 'Welcome'",
+"customizations": {
         "vscode": {
             "extensions": [
                 "ms-python.python",
@@ -8,6 +9,5 @@
                 "workbench.colorTheme": "GitHub Light Default"
             }
         }
-    },
-    "postCreateCommand": "source dir_maker.sh"
+    }
 }
