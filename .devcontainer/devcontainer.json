@@ -1,4 +1,4 @@
-{"postCreateCommand": "devName='Jhonatan Parada' && labName='Jhonatan_LAB' && labParent='Labs' && labFilesNum=4 && lstLabName=$(ls $labParent | tail -n 1) && mkdir $lstLabName && lstLabNum=${lstLabName: -1} && newLabNum=$(expr $lstLabNum + 1) && newLab=${labName}${newLabNum} && mkdir ${labParent}/${newLab} && for i in $(seq 1 $labFilesNum); do fileName='lab'${newLabNum}_${i}.py && txt='# '${fileName}' - '${devName} && echo $txt > ${labParent}/${newLab}/${fileName}; done",
+{"postCreateCommand": "devName='Jhonatan Parada' && labName='Jhonatan_LAB' && labParent='Labs' && labFilesNum=4 && lstLabName=$(ls $labParent | tail -n 1) && mkdir ${lstLabName}'test' && lstLabNum=${lstLabName: -1} && newLabNum=$(expr $lstLabNum + 1) && newLab=${labName}${newLabNum} && mkdir ${labParent}/${newLab} && for i in $(seq 1 $labFilesNum); do fileName='lab'${newLabNum}_${i}.py && txt='# '${fileName}' - '${devName} && echo $txt > ${labParent}/${newLab}/${fileName}; done",
   "customizations": {
         "vscode": {
             "extensions": [
