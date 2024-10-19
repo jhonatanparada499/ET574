@@ -1,4 +1,4 @@
-{"postCreateCommand": "./config.bash",
+{"postCreateCommand": "./config.sh",
   "customizations": {
         "vscode": {
             "extensions": [
