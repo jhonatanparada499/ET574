@@ -5,10 +5,11 @@
 
 # Any number of labs can be created after importing it, and using the function files
 
+defaultFilesNum=4;
+
 devName='Jhonatan Parada';
 labName='Jhonatan_LAB';
 labParent='Labs';
-defaultFilesNum=4;
 
 files() {
     local labFilesNum=${1:-$defaultFilesNum} # default num of files
