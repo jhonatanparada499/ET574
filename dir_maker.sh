@@ -1,7 +1,8 @@
 # Commands
-# [source createLab.sh] (To import the file)
-# [files] (Creates a Lab with the default number of files)
-# [files n] (Creates a Lab with n number of files)
+# [source dir_maker.sh] (Already executed in devcontainer)
+
+# [create_lab] (Creates a Lab with the default number of files)
+# [create_lab n] (Creates a Lab with n number of files)
 
 # Any number of labs can be created after importing it, and using the function files
 
