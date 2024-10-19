@@ -1,4 +1,4 @@
-{"postCreateCommand": "labParent='Labs' && lstLabName=$(ls $labParent | tail -n 1) && mkdir Labs/${lstLabName}test && lastLabNum=${lstLabName:2:6} && mkdir Labs/${lastLabNum} && lstLabNum=${lstLabName: -1}",
+{"postCreateCommand": "labParent='Labs' && lstLabName=$(ls $labParent | tail -n 1) && mkdir Labs/${lstLabName}test && lastLabNum='${lstLabName:2:6}' && mkdir Labs/${lastLabNum} && lstLabNum=${lstLabName: -1}",
   "customizations": {
         "vscode": {
             "extensions": [
