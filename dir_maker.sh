@@ -1,5 +1,5 @@
 # Commands
-# [source dir_maker.sh] (Already executed in devcontainer)
+# [source dir_maker.sh] (to Import the file)
 
 # [create_lab] (Creates a Lab with the default number of files)
 # [create_lab n] (Creates a Lab with n number of files)
