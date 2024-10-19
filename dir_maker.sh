@@ -5,7 +5,7 @@
 # [create_lab n] (Creates a Lab with n number of files)
 
 # Any number of labs can be created after importing it, and using the function files
-echo 'Hello wordl';
+
 defaultFilesNum=4;
 
 devName='Jhonatan Parada';
