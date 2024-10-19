@@ -1,6 +1,6 @@
 {"postCreateCommand": "sleep 2 && echo 'Welcome'",
 "customizations": {
-        "vscode": {
+    "vscode": {
             "extensions": [
                 "ms-python.python",
                 "GitHub.github-vscode-colorTheme"
