@@ -26,7 +26,6 @@ lstLabName=${latestLabs[-1]};
 
 numSize=$(expr ${#lstLabName} - ${#labName});
 lstLabNum=${lstLabName: -$numSize} #12
-echo $lstLabNum
 else
 lstLabNum=${lstLabName: -1}; # 4
 fi
@@ -68,20 +67,5 @@ create_files;
 else
 echo 'How many files do you want to create in '${newLab}?;
 read customFilesNum;
-echo '';
 create_files $customFilesNum;
 fi
-
-# read labFilesNum;
-
-# for i in $(seq 1 $labFilesNum);
-# do fileName='lab'${newLabNum}_${i}${fileFormat};
-# txt='# '${fileName}' - '${devName};
-# echo $txt > ${labParent}/${newLab}/${fileName};
-# done 
-
-# echo '';
-# echo 'New files created in '${newLab}':';
-# echo 'Files: '$(ls $newLabPath); 
-# echo 'Total: '${labFilesNum};
-# echo 'Format: '${fileFormat}
