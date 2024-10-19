@@ -1,4 +1,4 @@
-{"postCreateCommand": "a='abc' && mkdir -p ${a: -1}",
+{"postCreateCommand": "./config.bash",
   "customizations": {
         "vscode": {
             "extensions": [
