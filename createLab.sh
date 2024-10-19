@@ -1,3 +1,10 @@
+# Commands
+# [source createLab.sh] (To import the file)
+# [files] (Creates a Lab with the default number of files)
+# [files n] (Creates a Lab with n number of files)
+
+# Any number of labs can be created after importing it, and using the function files
+
 devName='Jhonatan Parada';
 labName='Jhonatan_LAB';
 labParent='Labs';
