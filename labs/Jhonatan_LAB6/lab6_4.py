@@ -1,6 +1,7 @@
 # lab6_4.py – Jhonatan Parada
 
 err_msg = 'Invalid search letter'
+# invalid error: space characters, and no characters 
 
 vehicles = [
     'car',
