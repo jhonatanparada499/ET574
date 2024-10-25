@@ -2,7 +2,7 @@
 import random
 
 prompt_1 = 'Enter the number of grades in the list: '
-prompt_2 = 'Enter the passing grades:'
+prompt_2 = 'Enter the passing grades: '
 err_msg = 'Invalid Input.'
 min_grade = 1
 max_grade = 100

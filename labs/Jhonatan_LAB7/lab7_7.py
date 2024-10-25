@@ -26,9 +26,15 @@ else:
         lst_sum = sum(nums_lst)
         lst_averg = lst_sum / len(nums_lst)
 
-        if len(str(lst_averg)) <= 3: # minimumm float value is 0.1 (1 decimal) (3 characters)
+        # minimumm float value is 0.1 (1 decimal) (3 characters)
+        if len(str(lst_averg)) <= 3:
             lst_averg = int(lst_averg)
+        else:
+            lst_averg = round(lst_averg, 2)
 
+        print()
         print(f'Sum = {lst_sum}')
         print(f'Average = {lst_averg}')
-        print('Number (s) entered:\n',*nums_lst)
+        print('Number(s) entered:')
+        for n in nums_lst: print(n, end=' ')
+        print()
