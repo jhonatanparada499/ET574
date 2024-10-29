@@ -1,10 +1,14 @@
 # Commands
-# [bash createLab.sh]
+# [bash createLab.sh or path]
 
+# Important Variables
 defaultFilesNum=4;
-devName='Jhonatan Parada';
-labName='Jhonatan_LAB';
+firstName='Jhonatan';
+lastName='Parada';
 labParent='labs';
+
+devName=${firstName}' '${lastName};
+labName=${firstName}'_LAB';
 fileFormat='.py';
 
 lstLabName=$(ls $labParent | tail -n 1); # a lab within the lowest ranges
