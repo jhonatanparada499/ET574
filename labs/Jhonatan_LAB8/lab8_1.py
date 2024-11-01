@@ -7,7 +7,7 @@ result = None
 def program():
     prompt_1 = 'Enter a numerator: '
     prompt_2 = 'Enter a denominator: '
-    prompt_err = 'Invalid Input'
+    input_err = 'Invalid Input'
     num_1 = ''
     num_2 = ''
 
@@ -21,10 +21,10 @@ def program():
                 try:
                     num_2 = eval(num_2)
                 except:
-                    print(prompt_err, end='\n\n')
+                    print(input_err, end='\n\n')
                     num_2 = input(prompt_2)  
         except:
-            print(prompt_err, end='\n\n')
+            print(input_err, end='\n\n')
             num_1 = input(prompt_1)
     
     return num_1, num_2
@@ -34,7 +34,7 @@ nmrtr, dnmntr = program()
 while result == None:
     if dnmntr != 0:
         result = math.fmod(nmrtr, dnmntr) 
-        print(f'{nmrtr} mod {dnmntr} = {int(result)}')
     else:
         print(dnmntr_err, end='\n\n')
         nmrtr, dnmntr = program()
+print(f'{nmrtr} mod {dnmntr} = {int(result)}')
