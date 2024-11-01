@@ -11,8 +11,8 @@ def middle(l):
     
     msg_1 = 'No changes made to list.'
     msg_2 = 'List length'
-    new_lst = l.copy()
     lst_len = len(l)
+    new_lst = l.copy()
 
     if lst_len <= 1: print(msg_1)
     else: new_lst = new_lst[1:-1]
