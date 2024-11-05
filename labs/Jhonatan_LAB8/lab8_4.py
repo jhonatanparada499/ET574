@@ -1,11 +1,5 @@
 # lab8_4.py - Jhonatan Parada
-
-# This could be done:
-# [import lab8_3] or [from lab8_3 import hello],
-# but the function call [hello()] in lab8_3
-# should be removed.
-
-def hello(): print('Hello World')
+import lab8_3
 
 def helloNum(n):
     par_err = '[n] parameter must be and integer'
@@ -14,6 +8,7 @@ def helloNum(n):
         return
 
     for i in range(n):
-        hello()
+        lab8_3.hello()
 
-helloNum(3)
+if __name__ == '__main__':
+    helloNum(3)
