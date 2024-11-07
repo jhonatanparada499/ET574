@@ -6,7 +6,9 @@ def nameFormat(last, first, m=None):
 
 def main():
     name_1 = nameFormat(first='james', last='bond')
-    name_2 = nameFormat(first='henry', m='indiana', last='jones')
+    name_2 = nameFormat(first='henry', m='indiana',
+                        last='jones')
+                        
     print(name_1, name_2, sep='\n')
 
 main()

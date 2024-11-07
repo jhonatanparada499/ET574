@@ -5,6 +5,7 @@ def nameFormat(first, middle, last):
 
 def main():
     nameFormat('john', 'stu', 'smith')
-    nameFormat(last='Kennedy', first='john', middle='fitzgerald')
+    nameFormat(last='Kennedy', first='john',
+               middle='fitzgerald')
 
 main()
