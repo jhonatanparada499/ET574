@@ -46,5 +46,17 @@ class TestMainFunction(unittest.TestCase):
             mock_print.mock_calls
         )
 
+    # Test Case Assignment 2: Handling Non-Numeric Input for Grades of Students
+
+    @patch('builtins.input', side_effect=['3', 'abc', '85', '90', '95'])
+    @patch('builtins.print')
+    def test_non_numeric_grades(self, mock_print, mock_input):
+        main_program.main()
+        mock_print.assert_called_with('The class average is: 90.00')
+        self.assertIn(
+            unittest.mock.call('The class average is: 90.00'), 
+            mock_print.mock_calls
+        )
+
 if __name__ == "__main__":
     unittest.main()
