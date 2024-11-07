@@ -58,5 +58,17 @@ class TestMainFunction(unittest.TestCase):
             mock_print.mock_calls
         )
 
+    # Test Case Assignment 3: Handling a Single Student
+    
+    @patch('builtins.input', side_effect=['1','90'])
+    @patch('builtins.print')
+    def test_single_student(self, mock_print, mock_input):
+        main_program.main()
+        mock_print.assert_called_with('The class average is: 90.00')
+        self.assertIn(
+            unittest.mock.call('The class average is: 90.00'), 
+            mock_print.mock_calls
+        )
+
 if __name__ == "__main__":
     unittest.main()
