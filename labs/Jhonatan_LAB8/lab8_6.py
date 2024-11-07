@@ -8,9 +8,7 @@ def main():
     print(middle(numList))
 
 def middle(l):
-    if not isinstance(l, list): return
-
-    if len(l) > 1: l = l[1:-1]
-    return l
+    if not isinstance(l, list) or len(l) < 1: return l
+    return l[1:-1]
 
 main()
