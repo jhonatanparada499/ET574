@@ -40,7 +40,6 @@ class Connect4:
     #   row -= 1
     #   if self.board[row][column - 1] == ' ':
     #     self.board[row][column - 1] = self.current_player
-    #     self.print_board()
     #     break
     # else: return False
 
@@ -51,14 +50,13 @@ class Connect4:
 
     # TO BE IMPLEMENTED:  Drop the current player's chip into the selected slot. This simply means mark the cell 
     # you found above to self.current_player, which is either X or O
-
+    column -= 1
     for row in reversed(self.board):
-      if row[column - 1] == ' ':
-        row[column - 1] = self.current_player
-        self.print_board()
+      if row[column] == ' ':
+        row[column] = self.current_player
         break
     else: return False
-    
+
     
     return True
 
