@@ -28,11 +28,22 @@ class Connect4:
       bool: True if the chip was successfully dropped, False if the column is full or if the column is out of range.
     """
     # TO BE IMPLEMENTED: Check if the column is out of range. The valid column # is from 1 to 7. 
+    if not 1 <= column <= 7: return False
 
 
     # TO BE IMPLEMENTED: Use a while-loop to check row by row for an empty cell on the column. 
     # Hint: start with the highest row number and decrement the row number each time in the loop.
- 
+    i = 5
+    while i >= 0:
+      if self.board[i][column - 1] == ' ':
+        self.board[i][column - 1] = self.current_player
+        self.print_board()
+        break
+      i -= 1
+    else: return False
+
+      #   continue
+      # else: return False
 
     # TO BE IMPLEMENTED:  If the column is full, return False. Question: what indicates the column is full?
    
