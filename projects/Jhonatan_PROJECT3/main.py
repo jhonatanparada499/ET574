@@ -33,24 +33,32 @@ class Connect4:
 
     # TO BE IMPLEMENTED: Use a while-loop to check row by row for an empty cell on the column. 
     # Hint: start with the highest row number and decrement the row number each time in the loop.
-    i = 5
-    while i >= 0:
-      if self.board[i][column - 1] == ' ':
-        self.board[i][column - 1] = self.current_player
-        self.print_board()
-        break
-      i -= 1
-    else: return False
 
-      #   continue
-      # else: return False
+
+    # row = len(self.board)
+    # while row > 0:
+    #   row -= 1
+    #   if self.board[row][column - 1] == ' ':
+    #     self.board[row][column - 1] = self.current_player
+    #     self.print_board()
+    #     break
+    # else: return False
 
     # TO BE IMPLEMENTED:  If the column is full, return False. Question: what indicates the column is full?
-   
+    # ANSWER: If the while loop gets to its else portion, that would mean that it was not broken by
+    # a break statement, which means it finished the loop and it did not find any empy slot. Therefore,
+    # that returns false.
 
     # TO BE IMPLEMENTED:  Drop the current player's chip into the selected slot. This simply means mark the cell 
     # you found above to self.current_player, which is either X or O
 
+    for row in reversed(self.board):
+      if row[column - 1] == ' ':
+        row[column - 1] = self.current_player
+        self.print_board()
+        break
+    else: return False
+    
     
     return True
 
