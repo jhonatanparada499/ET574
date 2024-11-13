@@ -32,8 +32,16 @@ class Connect4DropChipTestCase(unittest.TestCase):
             for _ in range(6):
                 self.game.drop_chip(column)
                 self.game.switch_player()
-        result = self.game.drop_chip(1)
-        self.assertFalse(result)
+        
+        # Original 
+        #result = self.game.drop_chip(1)
+        #self.assertFalse(result)
+
+        # Implementation
+        for col in range(7):
+            result = self.game.drop_chip(col)
+            self.assertFalse(result)
+            self.game.switch_player()
 
 if __name__ == '__main__':
     unittest.main()
