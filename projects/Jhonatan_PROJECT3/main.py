@@ -53,6 +53,7 @@ class Connect4:
     for row in reversed(self.board):
       if row[column] == ' ':
         row[column] = self.current_player
+        self.check_win(row,column) # passing coordinates as argument
         break
     else: return False
     
@@ -75,6 +76,9 @@ class Connect4:
         continue
       
       self.switch_player()
+    
+  def check_win(self,row,column):
+      pass
 
 if __name__ == "__main__":
   game = Connect4()
