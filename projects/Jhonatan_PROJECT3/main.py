@@ -30,10 +30,8 @@ class Connect4:
     # TO BE IMPLEMENTED: Check if the column is out of range. The valid column # is from 1 to 7. 
     if not 1 <= column <= 7: return False
 
-
     # TO BE IMPLEMENTED: Use a while-loop to check row by row for an empty cell on the column. 
     # Hint: start with the highest row number and decrement the row number each time in the loop.
-
 
     # row = len(self.board)
     # while row > 0:
@@ -50,16 +48,15 @@ class Connect4:
 
     # TO BE IMPLEMENTED:  Drop the current player's chip into the selected slot. This simply means mark the cell 
     # you found above to self.current_player, which is either X or O
+
     column -= 1
     for row in reversed(self.board):
       if row[column] == ' ':
         row[column] = self.current_player
         break
     else: return False
-
     
     return True
-
   
   def play_game(self):
     game_over = False
