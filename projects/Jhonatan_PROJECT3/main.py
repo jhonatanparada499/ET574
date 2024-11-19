@@ -1,6 +1,9 @@
 # Connect 4 Game
 
 class Connect4:
+  col = 7
+  rows = 6
+  connect = 4
   def __init__(self):
     self.board = [[' ' for _ in range(7)] for _ in range(6)]
     self.current_player = 'X'
@@ -50,12 +53,16 @@ class Connect4:
     # you found above to self.current_player, which is either X or O
 
     column -= 1
+
+    # checks that the column is not full so it does not waste time
+    if self.board[0][column] != ' ': return False # implemented
+
     for row in reversed(self.board):
       if row[column] == ' ':
         row[column] = self.current_player
-        self.check_win(row,column) # passing coordinates as argument
-        break
-    else: return False
+        # self.check_win(row,column) # passing coordinates as argument
+        # break
+    #else: return False
     
     return True
   
