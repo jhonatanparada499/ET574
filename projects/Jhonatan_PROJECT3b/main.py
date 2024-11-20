@@ -57,13 +57,46 @@ class Connect4:
         print("Column is full or out of range. Try again.")
         continue
 
-      if self.check_win(self.current_player):
+      if self.check_win_2(self.current_player):
         self.print_board()
         print(f"Player {self.current_player} wins!")
         game_over = True
       
       self.switch_player()
+
+  def check_win_2(self, player):
+    row = self.current_row
+    column = self.current_column
+    connect = 4
+
+    i = -1
+    while i != (1 + 1): # range -1, 0, 1 column
+      
+      y = -1
+      while y != (1 + 1): # range -1, 0, 1 row
+        if i == 0 and (y == -1 or y == 0): y += 1; continue # skips two key cells
+        
+        x = 1
+        while x != (connect):
+
+          # checks that the targe cell exists and that it is equal to player
+          try:
+            if self.board[row + (y * x)][column + (i * x)] != player:
+              print(f"[{y * x}][{i * x}] != {player}")
+              break
+          except:
+            print(f"non-indexable")
+            break
+          
+          x += 1
+        else: return True
+
+        y += 1
+
+      i += 1
     
+    return False
+
   def check_win(self, player):
     # Uses the coordinates of the current's player chip as starting point
     row = self.current_row
