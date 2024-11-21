@@ -66,158 +66,44 @@ class Connect4:
   def get_coordinates(self):
     return self.current_row, self.current_column
 
-  def highlight(self, coordinates):
-    for c in coordinates:
-      # changes string color
-      self.board[c[0]][c[1]] = f"\033[91m{self.board[c[0]][c[1]]}\033[00m"
-
   def check_win(self, player):
     row, column = self.get_coordinates()
     connect = 4
 
-    i = -1
-    while i != (1 + 1): # range -1, 0, 1 column
+    i = -1 # i represents the the column
+    while i != (1 + 1): # range (-1, 0, 1) for column
       
-      y = -1
-      while y != (1 + 1): # range -1, 0, 1 row
-        if i == 0 and (y == -1 or y == 0): # skips self and upward cell 
-          y += 1 
-          continue
+      y = -1 # y represents the row
+      while y != (1 + 1): # range (-1, 0, 1) for row
+        
+        # skips self and upward cell
+        if i == 0 and (y == -1 or y == 0): y += 1; continue
 
-        chips_coordinates = [(row, column)]
-
-        x = 1
+        x = 1 # x represents the number of chips that need to be aligned to win the game
         while x != (connect):
-          if (column == 0 and i == -1) or (row == 0 and y == -1): #  
-            # print(f"[{y * x}][{i * x}] non-indexable")
-            break
+          
+          # Defines the coordinates of a cell after a transition from the current chip
+          new_row = row + (y * x)
+          new_column = column + (i * x)
+          
+          # If either coordinate is negative, that means that the coordinate is out of range
+          if new_row < 0 or new_column < 0: break
 
-          # checks that the targe cell exists and that it is equal to player
+          # checks that the target cell exists and that it is equal to player
           try:
-            if self.board[row + (y * x)][column + (i * x)] != player:
-              # print(f"[{y * x}][{i * x}] != {player}")
-              break
-          except:
-            # print(f"[{y * x}][{i * x}] non-indexable")
-            break
+            if self.board[new_row][new_column] != player: break
+          except: break
 
-          chips_coordinates.append((row + (y * x), column + (i * x)))
           x += 1
         else: 
-          self.highlight(chips_coordinates)
-          return True # getting to this point means that there is a connection
+          # getting to this point means that everything went good during the loop
+          # therefore, there a specified number of chips are aligned
+          return True 
 
-        y += 1
+        y += 1  
       i += 1
     return False
 
 if __name__ == "__main__":
   game = Connect4()
   game.play_game()
-
-# old code
-
-  # def check_win_2(self, player):
-  #   # Uses the coordinates of the current's player chip as starting point
-  #   row = self.current_row
-  #   column = self.current_column
-    
-  #   # define the physical dimensions of the board
-  #   rows = len(self.board)
-  #   cols = len(self.board[0])
-  #   connect = 4
-  #   #cols, rows, connect = 7, 6, 4
-    
-  #   # Is there space to insert 4 chips to the left? the right? up? down?
-  #   l, r, u, d = None, None, None, None
-
-  #   # Allowed winning combinations
-  #   connections = {
-  #     'l': False,
-  #     'r': False,
-  #     'd': False,
-  #     'l_u': False,
-  #     'l_d': False,
-  #     'r_u': False,
-  #     'r_d': False
-  #   }
-
-  #   # There are 8 independent if statements
-
-  #   # Check left possibility to win
-  #   if column >= (connect - 1):
-  #     # print('user might win left')
-  #     l = True
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row][column - i] == player: i += 1; continue # [row][column - i]
-  #       # print('user did not win left'); break
-  #       break
-  #     else: connections['l'] = True
-
-  #   # Check right possibility to win
-  #   if (cols - 1) - column >= (connect - 1):
-  #     # print('user might win right')
-  #     r = True
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row][column + i] == player: i += 1; continue # [row][column + i]
-  #       # print('user did not win right'); break
-  #       break
-  #     else: connections['r'] = True
-
-  #   # Check up possibility to win
-  #   if row >= (connect - 1):
-  #     u = True
-  #     # print('user might win up')
-
-  #   # Check down possibility to win
-  #   if (rows - 1) - row >= (connect - 1):
-  #     # print('user might win down')
-  #     d = True
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row + i][column] == player: i += 1; continue # [row + i][column - i]
-  #       # print('user did not win down'); break
-  #       break
-  #     else: connections['d'] = True
-
-  #   if l and u:
-  #     # print('user might win diagonal left-up')
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row - i][column - i] == player: i += 1; continue # [row - i][column - i]
-  #       # print('user did not win diagonal left-up'); break
-  #       break
-  #     else: connections['l_u'] = True
-  #   if l and d:
-  #     # print('user might win diagonal left-down')
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row + i][column - i] == player: i += 1; continue # [row + i][column - i]
-  #       # print('user did not win diagonal left-down'); break
-  #       break
-  #     else: connections['l_d'] = True
-  #   if r and u:
-  #     # print('user might win diagonal right-up')
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row - i][column + i] == player: i += 1; continue # [row - i][column + i]
-  #       # print('user did not win right-up'); break
-  #       break
-  #     else: connections['r_u'] = True
-  #   if r and d:
-  #     # print('user might win diagonal right-down')
-  #     i = 1
-  #     while i != connect:
-  #       if self.board[row + i][column + i] == player: i += 1; continue # [row + i][column + i]
-  #       # print('user did not win right-down'); break
-  #       break
-  #     else: connections['r_d'] = True
-
-  #   # this dictionary contains all the winning combinations a player may have
-  #   # because by placing a chip, sometimes more than one connection can be created
-  #   wins = [k for k,v in connections.items() if v==True]
-
-  #   if wins: return True
-  #   return False
