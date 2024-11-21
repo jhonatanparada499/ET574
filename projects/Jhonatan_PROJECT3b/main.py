@@ -4,8 +4,8 @@ class Connect4:
     self.board = [[' ' for _ in range(7)] for _ in range(6)]
     self.current_player = 'X'
 
-    # New object attributes created
-    # Desc: coordinates needed in the check_win method
+    # New attributes
+    # Desc: coordinates for the check_win method
     self.current_row = None
     self.current_column = None
 
@@ -31,9 +31,8 @@ class Connect4:
     for row in reversed(self.board):
       if row[column] == ' ':
         row[column] = self.current_player
-        # self.check_win(self.current_player, self.board.index(row), column)
 
-        # sets the indexes of current's player chip        
+        # sets the coordinates of current's player chip        
         self.current_row = self.board.index(row)
         self.current_column = column
 
@@ -57,14 +56,14 @@ class Connect4:
         print("Column is full or out of range. Try again.")
         continue
 
-      if self.check_win_2(self.current_player):
+      if self.check_win(self.current_player):
         self.print_board()
         print(f"Player {self.current_player} wins!")
         game_over = True
       
       self.switch_player()
 
-  def check_win_2(self, player):
+  def check_win(self, player):
     row = self.current_row
     column = self.current_column
     connect = 4
@@ -74,10 +73,15 @@ class Connect4:
       
       y = -1
       while y != (1 + 1): # range -1, 0, 1 row
-        if i == 0 and (y == -1 or y == 0): y += 1; continue # skips two key cells
-        
+        if i == 0 and (y == -1 or y == 0): # skips self and upward cell 
+          y += 1 
+          continue
+
         x = 1
         while x != (connect):
+          if (column == 0 and i == -1) or (row == 0 and y == -1): #  
+            print(f"[{y * x}][{i * x}] non-indexable")
+            break
 
           # checks that the targe cell exists and that it is equal to player
           try:
@@ -85,124 +89,121 @@ class Connect4:
               print(f"[{y * x}][{i * x}] != {player}")
               break
           except:
-            print(f"non-indexable")
+            print(f"[{y * x}][{i * x}] non-indexable")
             break
-          
           x += 1
-        else: return True
+        else: return True # getting to this point means that there is a connection
 
         y += 1
-
       i += 1
-    
+
     return False
 
-  def check_win(self, player):
-    # Uses the coordinates of the current's player chip as starting point
-    row = self.current_row
-    column = self.current_column
+  # def check_win_2(self, player):
+  #   # Uses the coordinates of the current's player chip as starting point
+  #   row = self.current_row
+  #   column = self.current_column
     
-    # define the physical dimensions of the board
-    rows = len(self.board)
-    cols = len(self.board[0])
-    connect = 4
-    #cols, rows, connect = 7, 6, 4
+  #   # define the physical dimensions of the board
+  #   rows = len(self.board)
+  #   cols = len(self.board[0])
+  #   connect = 4
+  #   #cols, rows, connect = 7, 6, 4
     
-    # Is there space to insert 4 chips to the left? the right? up? down?
-    l, r, u, d = None, None, None, None
+  #   # Is there space to insert 4 chips to the left? the right? up? down?
+  #   l, r, u, d = None, None, None, None
 
-    # Allowed winning combinations
-    connections = {
-      'l': False,
-      'r': False,
-      'd': False,
-      'l_u': False,
-      'l_d': False,
-      'r_u': False,
-      'r_d': False
-    }
+  #   # Allowed winning combinations
+  #   connections = {
+  #     'l': False,
+  #     'r': False,
+  #     'd': False,
+  #     'l_u': False,
+  #     'l_d': False,
+  #     'r_u': False,
+  #     'r_d': False
+  #   }
 
-    # There are 8 independent if statements
+  #   # There are 8 independent if statements
 
-    # Check left possibility to win
-    if column >= (connect - 1):
-      # print('user might win left')
-      l = True
-      i = 1
-      while i != connect:
-        if self.board[row][column - i] == player: i += 1; continue # [row][column - i]
-        # print('user did not win left'); break
-        break
-      else: connections['l'] = True
+  #   # Check left possibility to win
+  #   if column >= (connect - 1):
+  #     # print('user might win left')
+  #     l = True
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row][column - i] == player: i += 1; continue # [row][column - i]
+  #       # print('user did not win left'); break
+  #       break
+  #     else: connections['l'] = True
 
-    # Check right possibility to win
-    if (cols - 1) - column >= (connect - 1):
-      # print('user might win right')
-      r = True
-      i = 1
-      while i != connect:
-        if self.board[row][column + i] == player: i += 1; continue # [row][column + i]
-        # print('user did not win right'); break
-        break
-      else: connections['r'] = True
+  #   # Check right possibility to win
+  #   if (cols - 1) - column >= (connect - 1):
+  #     # print('user might win right')
+  #     r = True
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row][column + i] == player: i += 1; continue # [row][column + i]
+  #       # print('user did not win right'); break
+  #       break
+  #     else: connections['r'] = True
 
-    # Check up possibility to win
-    if row >= (connect - 1):
-      u = True
-      # print('user might win up')
+  #   # Check up possibility to win
+  #   if row >= (connect - 1):
+  #     u = True
+  #     # print('user might win up')
 
-    # Check down possibility to win
-    if (rows - 1) - row >= (connect - 1):
-      # print('user might win down')
-      d = True
-      i = 1
-      while i != connect:
-        if self.board[row + i][column] == player: i += 1; continue # [row + i][column - i]
-        # print('user did not win down'); break
-        break
-      else: connections['d'] = True
+  #   # Check down possibility to win
+  #   if (rows - 1) - row >= (connect - 1):
+  #     # print('user might win down')
+  #     d = True
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row + i][column] == player: i += 1; continue # [row + i][column - i]
+  #       # print('user did not win down'); break
+  #       break
+  #     else: connections['d'] = True
 
-    if l and u:
-      # print('user might win diagonal left-up')
-      i = 1
-      while i != connect:
-        if self.board[row - i][column - i] == player: i += 1; continue # [row - i][column - i]
-        # print('user did not win diagonal left-up'); break
-        break
-      else: connections['l_u'] = True
-    if l and d:
-      # print('user might win diagonal left-down')
-      i = 1
-      while i != connect:
-        if self.board[row + i][column - i] == player: i += 1; continue # [row + i][column - i]
-        # print('user did not win diagonal left-down'); break
-        break
-      else: connections['l_d'] = True
-    if r and u:
-      # print('user might win diagonal right-up')
-      i = 1
-      while i != connect:
-        if self.board[row - i][column + i] == player: i += 1; continue # [row - i][column + i]
-        # print('user did not win right-up'); break
-        break
-      else: connections['r_u'] = True
-    if r and d:
-      # print('user might win diagonal right-down')
-      i = 1
-      while i != connect:
-        if self.board[row + i][column + i] == player: i += 1; continue # [row + i][column + i]
-        # print('user did not win right-down'); break
-        break
-      else: connections['r_d'] = True
+  #   if l and u:
+  #     # print('user might win diagonal left-up')
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row - i][column - i] == player: i += 1; continue # [row - i][column - i]
+  #       # print('user did not win diagonal left-up'); break
+  #       break
+  #     else: connections['l_u'] = True
+  #   if l and d:
+  #     # print('user might win diagonal left-down')
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row + i][column - i] == player: i += 1; continue # [row + i][column - i]
+  #       # print('user did not win diagonal left-down'); break
+  #       break
+  #     else: connections['l_d'] = True
+  #   if r and u:
+  #     # print('user might win diagonal right-up')
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row - i][column + i] == player: i += 1; continue # [row - i][column + i]
+  #       # print('user did not win right-up'); break
+  #       break
+  #     else: connections['r_u'] = True
+  #   if r and d:
+  #     # print('user might win diagonal right-down')
+  #     i = 1
+  #     while i != connect:
+  #       if self.board[row + i][column + i] == player: i += 1; continue # [row + i][column + i]
+  #       # print('user did not win right-down'); break
+  #       break
+  #     else: connections['r_d'] = True
 
-    # this dictionary contains all the winning combinations a player may have
-    # because by placing a chip, sometimes more than one connection can be created
-    wins = [k for k,v in connections.items() if v==True]
+  #   # this dictionary contains all the winning combinations a player may have
+  #   # because by placing a chip, sometimes more than one connection can be created
+  #   wins = [k for k,v in connections.items() if v==True]
 
-    if wins: return True
-    return False
+  #   if wins: return True
+  #   return False
 
 if __name__ == "__main__":
   game = Connect4()
   game.play_game()
-
