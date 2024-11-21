@@ -3,9 +3,6 @@ class Connect4:
   def __init__(self):
     self.board = [[' ' for _ in range(7)] for _ in range(6)]
     self.current_player = 'X'
-
-    # New attributes
-    # Desc: coordinates for the check_win method
     self.current_row = None
     self.current_column = None
 
@@ -32,9 +29,8 @@ class Connect4:
       if row[column] == ' ':
         row[column] = self.current_player
 
-        # sets the coordinates of current's player chip        
-        self.current_row = self.board.index(row)
-        self.current_column = column
+        # sets the coordinates of current's player chip
+        self.set_coordinates(self.board.index(row), column)
 
         break
         
@@ -63,9 +59,20 @@ class Connect4:
       
       self.switch_player()
 
+  def set_coordinates(self, row, column):
+    self.current_row = row
+    self.current_column = column
+
+  def get_coordinates(self):
+    return self.current_row, self.current_column
+
+  def highlight(self, coordinates):
+    for c in coordinates:
+      # changes string color
+      self.board[c[0]][c[1]] = f"\033[91m{self.board[c[0]][c[1]]}\033[00m"
+
   def check_win(self, player):
-    row = self.current_row
-    column = self.current_column
+    row, column = self.get_coordinates()
     connect = 4
 
     i = -1
@@ -77,27 +84,38 @@ class Connect4:
           y += 1 
           continue
 
+        chips_coordinates = [(row, column)]
+
         x = 1
         while x != (connect):
           if (column == 0 and i == -1) or (row == 0 and y == -1): #  
-            print(f"[{y * x}][{i * x}] non-indexable")
+            # print(f"[{y * x}][{i * x}] non-indexable")
             break
 
           # checks that the targe cell exists and that it is equal to player
           try:
             if self.board[row + (y * x)][column + (i * x)] != player:
-              print(f"[{y * x}][{i * x}] != {player}")
+              # print(f"[{y * x}][{i * x}] != {player}")
               break
           except:
-            print(f"[{y * x}][{i * x}] non-indexable")
+            # print(f"[{y * x}][{i * x}] non-indexable")
             break
+
+          chips_coordinates.append((row + (y * x), column + (i * x)))
           x += 1
-        else: return True # getting to this point means that there is a connection
+        else: 
+          self.highlight(chips_coordinates)
+          return True # getting to this point means that there is a connection
 
         y += 1
       i += 1
-
     return False
+
+if __name__ == "__main__":
+  game = Connect4()
+  game.play_game()
+
+# old code
 
   # def check_win_2(self, player):
   #   # Uses the coordinates of the current's player chip as starting point
@@ -203,7 +221,3 @@ class Connect4:
 
   #   if wins: return True
   #   return False
-
-if __name__ == "__main__":
-  game = Connect4()
-  game.play_game()
