@@ -68,40 +68,22 @@ class Connect4:
 
   def check_win(self, player):
     row, column = self.get_coordinates()
+    indexes = range(-1,1 + 1)
     connect = 4
 
-    i = -1 # i represents the the column
-    while i != (1 + 1): # range (-1, 0, 1) for column
-      
-      y = -1 # y represents the row
-      while y != (1 + 1): # range (-1, 0, 1) for row
-        
-        # skips self and upward cell
-        if i == 0 and (y == -1 or y == 0): y += 1; continue
+    for c in indexes:
+      for r in indexes:
+        if c == 0 and (r == -1 or r == 0): continue
+        for i in range(1,connect):
+          new_row = row + (r * i)
+          new_column = column + (c * i)
 
-        x = 1 # x represents the number of chips that need to be aligned to win the game
-        while x != (connect):
-          
-          # Defines the coordinates of a cell after a transition from the current chip
-          new_row = row + (y * x)
-          new_column = column + (i * x)
-          
-          # If either coordinate is negative, that means that the coordinate is out of range
-          if new_row < 0 or new_column < 0: break
+          if new_row < 0 or new_column < 0: break 
+          if new_row > (6 - 1) or new_column > (7 - 1): break
+          if self.board[new_row][new_column] != player: break
 
-          # checks that the target cell exists and that it is equal to player
-          try:
-            if self.board[new_row][new_column] != player: break
-          except: break
-
-          x += 1
-        else: 
-          # getting to this point means that everything went good during the loop
-          # therefore, there a specified number of chips are aligned
-          return True 
-
-        y += 1  
-      i += 1
+        else: return True
+    
     return False
 
 if __name__ == "__main__":
