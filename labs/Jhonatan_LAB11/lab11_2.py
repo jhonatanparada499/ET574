@@ -11,7 +11,8 @@ years = input(
     f'Enter the # of years in the school <1-{len(rank)}>: '
 )
 
-years = int(years)
-
-if not (1 <= years <= len(rank)): print('Invalid years.')
+try: years = int(years)
+except: print('Invalid input')
+    
+if 1 >= years >= len(rank): print('Invalid years.')
 else: print(f'Year {years} = {rank[years]}')
