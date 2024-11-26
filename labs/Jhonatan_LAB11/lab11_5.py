@@ -20,4 +20,5 @@ user_2 = createUser(
     school='QCC',
     major='CSIS'
 )
+
 printUser(user_2)

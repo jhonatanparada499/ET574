@@ -1,5 +1,4 @@
 # lab11_4.py - Jhonatan Parada
-
 class Stu:
     def __init__(self, name, gpa):
         self.stuInfo = {
@@ -11,15 +10,10 @@ stu_1 = Stu('tom cat', 3.456)
 stu_2 = Stu('jerry mouse', 4.0)
 stu_3 = Stu('Sponge bob', 3.99)
 
-stuClass = [
-    stu_1.stuInfo,
-    stu_2.stuInfo,
-    stu_3.stuInfo
-]
+stuClass = [stu_1.stuInfo, stu_2.stuInfo, stu_3.stuInfo]
 
 print('All students in this list:')
 print(stuClass, end='\n\n')
-
 print('All students information:')
 for stuInfo in stuClass:
     print(
