@@ -14,5 +14,7 @@ years = input(
 try: years = int(years)
 except: print('Invalid input')
     
-if 1 >= years >= len(rank): print('Invalid years.')
-else: print(f'Year {years} = {rank[years]}')
+if 1 >= years >= len(rank): 
+    print('Invalid years.')
+else: 
+    print(f'Year {years} = {rank[years]}')

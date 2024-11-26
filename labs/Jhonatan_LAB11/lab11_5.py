@@ -16,7 +16,8 @@ printUser(user_1); print()
 
 user_2 = createUser(
     name='Sara',
-    age=20,school='QCC',
+    age=20,
+    school='QCC',
     major='CSIS'
 )
 printUser(user_2)
