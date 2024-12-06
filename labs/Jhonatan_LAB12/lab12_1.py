@@ -1,11 +1,5 @@
 # lab12_1.py - Jhonatan Parada
 
-# .sh (Unix, bash)
-my_file_path = 'data//Presidents.txt'
-
-# .bat (Windows, cmd, powershell )
-# my_file_path = 'data\\Presidents.txt'
-
 def print_file_content(file_path, mode):
     if not isinstance(file_path, str):
         print(f'{file_path} must be a string'); return
@@ -13,15 +7,16 @@ def print_file_content(file_path, mode):
     if not isinstance(mode, str):
         print(f'{mode} must be a string'); return
 
-    modes = ('loop', 'list')
-    mode = mode.lower()
-
-    try: file_obj = open(file_path, 'r')
+    try: file_obj = open(file_path)
     except FileNotFoundError:
         print('file path not found'); return
+
+    modes = ('loop', 'list')
+    mode = mode.lower()
     
     if not mode in modes:
-        print('invalid mode')
+        print(f'{mode} is not a valid mode')
+        print(f'valid modes: {modes}')
         file_obj.close()
         return
 
@@ -35,5 +30,16 @@ def print_file_content(file_path, mode):
 
     file_obj.close()
 
-print_file_content(my_file_path, 'loop')
-print_file_content(my_file_path, 'list')
+def main():
+    # .sh (Unix, bash)
+    my_file_path = 'data//Presidents.txt'
+
+    # .bat (Windows, cmd, powershell )
+    # my_file_path = 'data\\Presidents.txt'
+
+    print('Using Loop:')
+    print_file_content(my_file_path, 'loop')
+    print('\nUsing List:')
+    print_file_content(my_file_path, 'list')
+
+if __name__ == '__main__': main()
