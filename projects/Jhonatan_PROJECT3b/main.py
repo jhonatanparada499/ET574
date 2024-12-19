@@ -67,19 +67,33 @@ class Connect4:
     return self.current_row, self.current_column
 
   def check_win(self, player):
+    # Gets the indexes or coordinates of the dropped chip 
     row, column = self.get_coordinates()
     indexes = range(-1,1 + 1)
     connect = 4
 
     for c in indexes:
       for r in indexes:
+        # Ignores the chip's cell and the one above it 
         if c == 0 and (r == -1 or r == 0): continue
+
         for i in range(1,connect):
+          # cells to check (the ones surrouanded the dropped chip)
           new_row = row + (r * i)
           new_column = column + (c * i)
 
-          if new_row < 0 or new_column < 0: break 
+          # if new_row or new_column is negative then it means
+          # that the cell to check is not within the limits of 
+          # the board
+          if new_row < 0 or new_column < 0: break
+
+          # if new_row is greater than the number of rows, that
+          # means that the cell to check is out of the limits of 
+          # the board, new_column works similar.
           if new_row > (6 - 1) or new_column > (7 - 1): break
+
+          # if the cell to check does not contain the current player
+          # it breaks the loop and moves on to the another cell.
           if self.board[new_row][new_column] != player: break
 
         else: return True
